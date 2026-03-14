@@ -37,7 +37,7 @@ jobs:
           # ----------------------------------------------------------------
           LOGINS="qkobyy flyzer_s silowa djaem_ nevrozzar_ maisnonfps mdl_labastos"
 
-          QUERY=$(echo "$LOGINS" | tr ' ' '\n' | sed 's/^/user_login=/' | paste -sd '&')
+          QUERY=$(echo "$LOGINS" | tr ' ' '\n' | sed 's/^/login=/' | paste -sd '&')
 
           RESPONSE=$(curl -s \
             -H "Authorization: Bearer $TWITCH_TOKEN" \

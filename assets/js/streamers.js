@@ -12,11 +12,11 @@ let profiles   = {};
 async function fetchData() {
   const bust = '?t=' + Date.now();
   await Promise.all([
-    fetch('live-status.json' + bust)
+    fetch('/live-status.json' + bust)
       .then(r => r.ok ? r.json() : {})
       .then(d => { liveStatus = d; })
       .catch(() => {}),
-    fetch('streamer-profiles.json' + bust)
+    fetch('/streamer-profiles.json' + bust)
       .then(r => r.ok ? r.json() : {})
       .then(d => { profiles = d; })
       .catch(() => {})
