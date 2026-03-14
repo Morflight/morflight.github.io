@@ -9,9 +9,6 @@
 
   --df:          #00e5ff;   /* Delta Force accent */
   --df-dim:      rgba(0, 229, 255, 0.12);
-  --mhw:         #f97316;   /* Monster Hunter World accent */
-  --mhw-dim:     rgba(249, 115, 22, 0.12);
-
   --text:        #e2e8f0;
   --text-muted:  #64748b;
   --text-dim:    #94a3b8;
@@ -203,7 +200,6 @@ h1, h2, h3, h4 {
   border-radius: 3px;
 }
 .badge--df  { background: var(--df-dim);  color: var(--df);  }
-.badge--mhw { background: var(--mhw-dim); color: var(--mhw); }
 
 /* ============================================================
    INDEX — Hero
@@ -270,16 +266,13 @@ h1, h2, h3, h4 {
   transition: border-color 0.2s, background 0.2s;
 }
 .game-pill--df  { border-color: rgba(0,229,255,0.3); }
-.game-pill--mhw { border-color: rgba(249,115,22,0.3); }
 .game-pill--df:hover  { background: var(--df-dim);  border-color: var(--df); }
-.game-pill--mhw:hover { background: var(--mhw-dim); border-color: var(--mhw); }
 
 .game-pill__dot {
   width: 8px; height: 8px;
   border-radius: 50%;
 }
 .game-pill--df  .game-pill__dot { background: var(--df); }
-.game-pill--mhw .game-pill__dot { background: var(--mhw); }
 
 .game-pill__role {
   font-size: 0.7rem;
@@ -377,7 +370,6 @@ h1, h2, h3, h4 {
 }
 
 .stat-block--df  .stat-block__header { background: var(--df-dim); }
-.stat-block--mhw .stat-block__header { background: var(--mhw-dim); }
 
 .stat-block__game {
   font-family: var(--font-head);
@@ -386,7 +378,6 @@ h1, h2, h3, h4 {
   letter-spacing: 0.04em;
 }
 .stat-block--df  .stat-block__game { color: var(--df); }
-.stat-block--mhw .stat-block__game { color: var(--mhw); }
 
 .stat-block__rows { padding: 0.5rem 0; }
 
@@ -411,7 +402,6 @@ h1, h2, h3, h4 {
   color: var(--text);
 }
 .stat-block--df  .stat-row__value { color: var(--df); }
-.stat-block--mhw .stat-row__value { color: var(--mhw); }
 
 /* ============================================================
    STREAMERS — Page layout
@@ -439,7 +429,6 @@ h1, h2, h3, h4 {
   background: var(--surface-alt);
 }
 .streamer-card--df:hover  { border-color: var(--df); }
-.streamer-card--mhw:hover { border-color: var(--mhw); }
 
 .streamer-card__name {
   font-family: var(--font-head);
@@ -474,9 +463,7 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 .streamer-card--df  .btn-watch { border-color: var(--df);  color: var(--df); }
-.streamer-card--mhw .btn-watch { border-color: var(--mhw); color: var(--mhw); }
 .streamer-card--df  .btn-watch:hover { background: var(--df);  color: var(--bg); }
-.streamer-card--mhw .btn-watch:hover { background: var(--mhw); color: var(--bg); }
 
 /* ============================================================
    CONTACT — Page layout
@@ -588,7 +575,7 @@ h1, h2, h3, h4 {
 .badge--hosted { background: var(--df-dim);          color: var(--df); }
 .badge--soon   { background: rgba(100,116,139,0.15); color: var(--text-muted); }
 .badge--platform.badge--discord   { background: rgba(88,101,242,0.15); color: #818cf8; }
-.badge--platform.badge--teamspeak { background: rgba(249,115,22,0.12); color: var(--mhw); }
+.badge--platform.badge--teamspeak { background: rgba(249,115,22,0.12); color: #f97316; }
 
 /* ============================================================
    Section header (shared across pages)
@@ -699,7 +686,7 @@ h1, h2, h3, h4 {
 .tag-pill[data-tag="entertainer"]   { background: rgba(192,132,252,0.12); color: #c084fc; border-color: rgba(192,132,252,0.3); }
 .tag-pill[data-tag="casual-player"] { background: rgba( 96,165,250,0.12); color: #60a5fa; border-color: rgba( 96,165,250,0.3); }
 .tag-pill[data-tag="operation"]     { background: rgba(  0,229,255,0.12); color: var(--df); border-color: rgba(0,229,255,0.3);  }
-.tag-pill[data-tag="warfare"]       { background: rgba(249,115, 22,0.12); color: var(--mhw); border-color: rgba(249,115,22,0.3); }
+.tag-pill[data-tag="warfare"]       { background: rgba(249,115, 22,0.12); color: #f97316; border-color: rgba(249,115,22,0.3); }
 .tag-pill[data-tag="top-player"]    { background: rgba(250,204, 21,0.12); color: #facc15; border-color: rgba(250,204, 21,0.3); }
 .tag-pill[data-tag="sineva"]        { background: rgba( 34,211,238,0.12); color: #22d3ee; border-color: rgba( 34,211,238,0.3); }
 .tag-pill[data-tag="girl"]          { background: rgba(244,114,182,0.12); color: #f472b6; border-color: rgba(244,114,182,0.3); }

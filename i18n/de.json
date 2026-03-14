@@ -1,36 +1,36 @@
 {
   "nav": {
-    "home": "Zuhause",
-    "about": "Über",
+    "home": "Startseite",
+    "about": "Über mich",
     "streamers": "Streamer",
-    "community": "Gemeinschaft",
+    "community": "Community",
     "contact": "Kontakt"
   },
   "hero": {
     "eyebrow": "Delta Force Ressourcen",
-    "subtitle": "Ein kuratierter Hub für Delta Force-Spieler - Streamer, Community-Server, Wettbewerbs-Tools und Spieldaten. Entwickelt von einem Spieler für Spieler.",
-    "role_main": "Haupt"
+    "subtitle": "Ein Hub für Delta-Force-Spieler — Streamer, Community-Server, Wettkampf-Tools und Spieldaten. Von einem Spieler, für Spieler.",
+    "role_main": "Main"
   },
   "projects": {
     "streamer_showcase": {
       "title": "Streamer Showcase",
-      "desc": "Kuratierte Liste der Delta Force Streamer mit Tags, Sprachfiltern und Live-Status. Finde Inhalte, die zu deiner Stimmung passen.",
-      "cta": "Streamer → durchsuchen"
+      "desc": "Kuratierte Liste von Delta-Force-Streamern mit Tags, Sprachfiltern und Live-Status. Finde Content, der zu dir passt.",
+      "cta": "Streamer entdecken →"
     },
     "community_reference": {
-      "title": "Gemeinschaftliche Referenz",
-      "desc": "Discord und TeamSpeak Server für die Delta Force Community. Finde deine Region, deinen Spielstil und deine Leute.",
+      "title": "Community Reference",
+      "desc": "Discord- und TeamSpeak-Server für die Delta-Force-Community. Finde deine Region, deinen Spielstil, deine Leute.",
       "cta": "Server finden →"
     },
     "competitive_hub": {
-      "title": "Wettbewerbsfähiger Hub",
-      "desc": "Anleitungen zur Einrichtung des Scrim-Clients, Aktualisierungen des Regelwerks für Wettkämpfe und Verfolgung der Statistiken für die Delta Force-Wettkampfszene.",
-      "cta": "Demnächst"
+      "title": "Competitive Hub",
+      "desc": "Scrim-Setup-Guides, Regelwerk-Updates und Stat-Tracking für die kompetitive Delta-Force-Szene.",
+      "cta": "Demnächst verfügbar"
     },
     "data_hub": {
-      "title": "Datendrehscheibe",
-      "desc": "Spieldaten, Wirtschaftsdaten, Waffenstatistiken und Builds für Delta Force. Zahlen für Leute, die sich für Zahlen interessieren.",
-      "cta": "Demnächst"
+      "title": "Data Hub",
+      "desc": "Spieldaten, Wirtschafts-Tracking, Waffen-Stats und Builds für Delta Force. Zahlen für alle, die es genau wissen wollen.",
+      "cta": "Demnächst verfügbar"
     }
   },
   "badges": {
@@ -38,31 +38,31 @@
     "in_development": "In Entwicklung"
   },
   "about": {
-    "label": "Spiel-Profil",
-    "bio": "Spieler mit Fokus auf Delta Force-Wettkämpfe. Ich baue und pflege Ressourcen für die Delta Force Community - Streamer, Server, Guides und Datentools. Diese Seite ist der Knotenpunkt für all das.",
+    "label": "Spielerprofil",
+    "bio": "Spieler mit Fokus auf kompetitives Delta Force. Ich baue und pflege Ressourcen für die Delta-Force-Community — Streamer, Server, Guides und Daten-Tools. Diese Seite ist der Hub für alles davon.",
     "projects_label": "Projekte",
-    "streamer_showcase_desc": "Kuratiertes Delta Force Streamer-Verzeichnis mit Filtern und Live-Status.",
-    "community_reference_desc": "Liste der Delta Force Discord und TeamSpeak Server.",
-    "competitive_hub_desc": "Scrim-Guides, Regelwerke und Statistiken für das Wettkampfspiel.",
-    "data_hub_desc": "Wirtschaftsverfolgung, Waffenstatistiken und Spieldaten-Tools.",
-    "view": "Ansicht →"
+    "streamer_showcase_desc": "Kuratiertes Delta-Force-Streamer-Verzeichnis mit Filtern und Live-Status.",
+    "community_reference_desc": "Liste von Delta-Force-Discord- und TeamSpeak-Servern.",
+    "competitive_hub_desc": "Scrim-Guides, Regelwerke und Stat-Tracking für kompetitives Spiel.",
+    "data_hub_desc": "Wirtschafts-Tracking, Waffen-Stats und Daten-Tools.",
+    "view": "Ansehen →"
   },
   "streamers": {
     "label": "Kuratierte Liste",
-    "title": "Delta Force Luftschlangen",
-    "intro": "Handverlesene Streamer mit Beschreibungen, die dir helfen, dein Match zu finden. Der Live-Status wird beim Laden der Seite aktualisiert.",
-    "search_placeholder": "Suche nach Namen...",
+    "title": "Delta-Force-Streamer",
+    "intro": "Handverlesene Streamer mit Beschreibungen, damit du den richtigen für dich findest. Live-Status wird beim Laden der Seite aktualisiert.",
+    "search_placeholder": "Nach Name suchen…",
     "filter_all": "Alle",
-    "filter_cam_on": "Cam On",
-    "filter_no_cam": "Keine Kamera",
+    "filter_cam_on": "Kamera an",
+    "filter_no_cam": "Ohne Kamera",
     "filter_tryharder": "Tryharder",
     "filter_entertainer": "Entertainer",
-    "filter_casual_player": "Gelegenheitsspieler",
+    "filter_casual_player": "Casual",
     "filter_operation": "Operation",
-    "filter_warfare": "Kriegsführung",
-    "filter_top_player": "Top Spieler",
+    "filter_warfare": "Warfare",
+    "filter_top_player": "Top-Spieler",
     "filter_sineva": "Sineva",
-    "filter_girl": "Mädchen",
+    "filter_girl": "Girl",
     "lang_all": "Alle Sprachen",
     "lang_en": "Englisch",
     "lang_fr": "Französisch",
@@ -71,20 +71,20 @@
     "lang_zh": "Chinesisch",
     "lang_ru": "Russisch",
     "lang_pt": "Portugiesisch",
-    "empty": "Keine Streamer passen zu deinen Filtern."
+    "empty": "Keine Streamer entsprechen deinen Filtern."
   },
   "community": {
-    "label": "Gemeinschaftliche Referenz",
-    "title": "Community Diener",
-    "intro": "Discord und TeamSpeak Server für Delta Force Spieler. Finde deine Region, deinen Spielstil und deine Leute.",
+    "label": "Community Reference",
+    "title": "Community-Server",
+    "intro": "Discord- und TeamSpeak-Server für Delta-Force-Spieler. Finde deine Region, deinen Spielstil, deine Leute.",
     "filter_all": "Alle",
-    "filter_competitive": "Konkurrenzfähig",
-    "filter_casual": "Lässig",
+    "filter_competitive": "Kompetitiv",
+    "filter_casual": "Casual",
     "filter_scrims": "Scrims",
     "filter_eu": "EU",
     "filter_na": "NA",
     "filter_global": "Global",
-    "join": "→ Verbinden",
+    "join": "Beitreten →",
     "empty": "Keine Server entsprechen deinen Filtern."
   },
   "contact": {

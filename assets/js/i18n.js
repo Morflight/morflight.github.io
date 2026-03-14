@@ -9,6 +9,7 @@ const DEFAULT    = 'en';
 
 let _translations = {};
 let _current      = DEFAULT;
+let _cache        = {};
 
 /* -- Lookup ------------------------------------------------ */
 
@@ -46,12 +47,13 @@ async function setLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
 
-  if (lang === DEFAULT) {
-    _translations = {};
+  if (_cache[lang]) {
+    _translations = _cache[lang];
   } else {
     try {
       const res = await fetch(`/i18n/${lang}.json?t=${Date.now()}`);
       _translations = res.ok ? await res.json() : {};
+      _cache[lang] = _translations;
     } catch (_) {
       _translations = {};
     }

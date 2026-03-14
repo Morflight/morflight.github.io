@@ -1,35 +1,35 @@
 {
   "nav": {
     "home": "Início",
-    "about": "Sobre você",
-    "streamers": "Flâmulas",
+    "about": "Sobre mim",
+    "streamers": "Streamers",
     "community": "Comunidade",
     "contact": "Contato"
   },
   "hero": {
-    "eyebrow": "Recursos da Delta Force",
-    "subtitle": "Um centro de curadoria para jogadores de Delta Force - streamers, servidores da comunidade, ferramentas competitivas e dados do jogo. Criado por um jogador, para jogadores.",
-    "role_main": "Principal"
+    "eyebrow": "Recursos de Delta Force",
+    "subtitle": "Um hub para jogadores de Delta Force — streamers, servidores comunitários, ferramentas competitivas e dados do jogo. Feito por um jogador, para jogadores.",
+    "role_main": "Main"
   },
   "projects": {
     "streamer_showcase": {
-      "title": "Exibição de streamer",
-      "desc": "Lista selecionada de streamers da Delta Force com tags, filtros de idioma e status ao vivo. Encontre o conteúdo que combina com você.",
-      "cta": "Navegue pelos Streamers → Você pode ver os Streamers."
+      "title": "Streamer Showcase",
+      "desc": "Lista curada de streamers de Delta Force com tags, filtros de idioma e status ao vivo. Encontre conteúdo que combina com você.",
+      "cta": "Ver streamers →"
     },
     "community_reference": {
-      "title": "Referência da comunidade",
-      "desc": "Servidores Discord e TeamSpeak para a comunidade Delta Force. Encontre sua região, seu estilo de jogo e seu pessoal.",
-      "cta": "Encontrar servidores → você pode encontrar servidores."
+      "title": "Community Reference",
+      "desc": "Servidores de Discord e TeamSpeak para a comunidade de Delta Force. Encontre sua região, seu estilo de jogo, o seu pessoal.",
+      "cta": "Ver servidores →"
     },
     "competitive_hub": {
-      "title": "Hub competitivo",
-      "desc": "Guias de configuração de cliente Scrim, atualizações de conjunto de regras competitivas e rastreamento de estatísticas para o cenário competitivo da Delta Force.",
+      "title": "Competitive Hub",
+      "desc": "Guias de configuração de scrim, atualizações de regras competitivas e rastreamento de stats para a cena competitiva de Delta Force.",
       "cta": "Em breve"
     },
     "data_hub": {
-      "title": "Hub de dados",
-      "desc": "Dados do jogo, rastreamento da economia, estatísticas de armas e construções para Delta Force. Números para pessoas que se importam com números.",
+      "title": "Data Hub",
+      "desc": "Dados do jogo, rastreamento de economia, stats e builds de armas para Delta Force. Números para quem leva números a sério.",
       "cta": "Em breve"
     }
   },
@@ -38,31 +38,31 @@
     "in_development": "Em desenvolvimento"
   },
   "about": {
-    "label": "Perfil de jogo",
-    "bio": "Jogador com foco em Delta Force competitivo. Eu crio e mantenho recursos para a comunidade Delta Force: streamers, servidores, guias e ferramentas de dados. Este site é o centro de tudo isso.",
+    "label": "Perfil de jogador",
+    "bio": "Jogador focado no Delta Force competitivo. Construo e mantenho recursos para a comunidade de Delta Force — streamers, servidores, guias e ferramentas de dados. Este site é o hub de tudo isso.",
     "projects_label": "Projetos",
-    "streamer_showcase_desc": "Diretório de streamers da Delta Force com filtros e status ao vivo.",
-    "community_reference_desc": "Lista de servidores Discord e TeamSpeak do Delta Force.",
-    "competitive_hub_desc": "Guias de Scrim, conjuntos de regras e controle de estatísticas para jogos competitivos.",
-    "data_hub_desc": "Você pode acompanhar a economia, as estatísticas das armas e as ferramentas de dados do jogo.",
-    "view": "Ver → você"
+    "streamer_showcase_desc": "Diretório curado de streamers de Delta Force com filtros e status ao vivo.",
+    "community_reference_desc": "Lista de servidores de Discord e TeamSpeak de Delta Force.",
+    "competitive_hub_desc": "Guias de scrim, regras e rastreamento de stats para jogo competitivo.",
+    "data_hub_desc": "Rastreamento de economia, stats de armas e ferramentas de dados.",
+    "view": "Ver →"
   },
   "streamers": {
     "label": "Lista selecionada",
-    "title": "Flâmulas da Delta Force",
-    "intro": "Streamers escolhidos a dedo com descrições para ajudar você a encontrar sua partida. O status ao vivo é atualizado quando a página é carregada.",
-    "search_placeholder": "Pesquisar por nome...",
+    "title": "Streamers de Delta Force",
+    "intro": "Streamers selecionados à mão com descrições para ajudar você a encontrar o seu. O status ao vivo é atualizado ao carregar a página.",
+    "search_placeholder": "Buscar por nome…",
     "filter_all": "Todos",
-    "filter_cam_on": "Câmera ligada",
-    "filter_no_cam": "Sem câmera",
-    "filter_tryharder": "Mais difícil",
-    "filter_entertainer": "Animador",
-    "filter_casual_player": "Jogador casual",
+    "filter_cam_on": "Cam ligada",
+    "filter_no_cam": "Sem cam",
+    "filter_tryharder": "Tryharder",
+    "filter_entertainer": "Entertainer",
+    "filter_casual_player": "Casual",
     "filter_operation": "Operação",
-    "filter_warfare": "Guerra",
-    "filter_top_player": "Melhor jogador",
+    "filter_warfare": "Warfare",
+    "filter_top_player": "Top jogador",
     "filter_sineva": "Sineva",
-    "filter_girl": "Garota",
+    "filter_girl": "Girl",
     "lang_all": "Todos os idiomas",
     "lang_en": "Inglês",
     "lang_fr": "Francês",
@@ -74,25 +74,25 @@
     "empty": "Nenhum streamer corresponde aos seus filtros."
   },
   "community": {
-    "label": "Referência da comunidade",
-    "title": "Servidores da comunidade",
-    "intro": "Servidores Discord e TeamSpeak para jogadores de Delta Force. Encontre sua região, seu estilo de jogo e seu pessoal.",
+    "label": "Community Reference",
+    "title": "Servidores comunitários",
+    "intro": "Servidores de Discord e TeamSpeak para jogadores de Delta Force. Encontre sua região, seu estilo de jogo, o seu pessoal.",
     "filter_all": "Todos",
     "filter_competitive": "Competitivo",
     "filter_casual": "Casual",
     "filter_scrims": "Scrims",
-    "filter_eu": "UE",
+    "filter_eu": "EU",
     "filter_na": "NA",
     "filter_global": "Global",
-    "join": "Juntar-se a você →",
+    "join": "Entrar →",
     "empty": "Nenhum servidor corresponde aos seus filtros."
   },
   "contact": {
-    "label": "Encontre-me",
+    "label": "Me encontre",
     "title": "Contato",
-    "discord_desc": "Adicione-me no Discord"
+    "discord_desc": "Me adicione no Discord"
   },
   "footer": {
-    "disclaimer": "Não é afiliado ao TiMi Studio ou à Level Infinite"
+    "disclaimer": "Não afiliado à TiMi Studio ou Level Infinite"
   }
 }
