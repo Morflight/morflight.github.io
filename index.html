@@ -1,13 +1,67 @@
 <!doctype html>
-<html>
-
-	<head>
-		<meta charset="utf-8">
-		<title>Morflight | Home</title>
-	</head>
-
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Morflight | Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
 <body>
-	<div>
-		<h1>Ceci est le site de Morflight</h1>
-	</div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Morflight</a>
+    <button class="nav__toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Streamers</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero__eyebrow">Gaming Profile</p>
+    <h1 class="hero__title">Morf<span>light</span></h1>
+    <p class="hero__sub">Tactical shooter main. Monster hunter on the side. Here's where I track my stats and share the streamers worth watching.</p>
+
+    <div class="hero__games">
+      <div class="game-pill game-pill--df">
+        <span class="game-pill__dot"></span>
+        Delta Force
+        <span class="game-pill__role">Main</span>
+      </div>
+      <div class="game-pill game-pill--mhw">
+        <span class="game-pill__dot"></span>
+        Monster Hunter World
+        <span class="game-pill__role">Secondary</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="nav-cards">
+    <a href="about.html" class="nav-card">
+      <span class="nav-card__title">About</span>
+      <span class="nav-card__desc">My stats across both games</span>
+    </a>
+    <a href="projects.html" class="nav-card">
+      <span class="nav-card__title">Streamers</span>
+      <span class="nav-card__desc">Content creators I recommend</span>
+    </a>
+    <a href="contact.html" class="nav-card">
+      <span class="nav-card__title">Contact</span>
+      <span class="nav-card__desc">Find me on gaming platforms</span>
+    </a>
+  </div>
+
+  <footer class="footer">
+    &copy; Morflight — <a href="https://github.com/morflight" style="color:var(--df)">GitHub</a>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
+</html>
