@@ -42,7 +42,7 @@ jobs:
             -H "Client-Id: $TWITCH_CLIENT_ID" \
             "https://api.twitch.tv/helix/users?$QUERY")
 
-          echo "$RESPONSE" | jq '[.data[] | {(.login): .profile_image_url}] | add // {}' > streamer-profiles.json
+          echo "$RESPONSE" | jq '[(.data // [])[] | {(.login): .profile_image_url}] | add // {}' > streamer-profiles.json
 
       - name: Commit if changed
         run: |
