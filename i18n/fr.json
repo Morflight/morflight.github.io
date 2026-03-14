@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos de",
+    "streamers": "Streamers",
+    "community": "Communauté",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Ressources de la Force Delta",
+    "subtitle": "Un hub curaté pour les joueurs de Delta Force - streamers, serveurs communautaires, outils de compétition et données de jeu. Construit par un joueur, pour les joueurs.",
+    "role_main": "Principal"
+  },
+  "projects": {
+    "streamer_showcase": {
+      "title": "Vitrine des streamers",
+      "desc": "Liste curatée de streamers Delta Force avec des tags, des filtres de langue et des statuts en direct. Trouve du contenu qui correspond à ton état d'esprit.",
+      "cta": "Parcourir les Streamers →"
+    },
+    "community_reference": {
+      "title": "Référence communautaire",
+      "desc": "Serveurs Discord et TeamSpeak pour la communauté Delta Force. Trouve ta région, ton style de jeu, tes interlocuteurs.",
+      "cta": "Trouver des serveurs →"
+    },
+    "competitive_hub": {
+      "title": "Hub compétitif",
+      "desc": "Guides de configuration du client Scrim, mises à jour des règles de compétition et suivi des statistiques pour la scène compétitive de la Force Delta.",
+      "cta": "Bientôt disponible"
+    },
+    "data_hub": {
+      "title": "Centre de données",
+      "desc": "Données du jeu, suivi de l'économie, statistiques des armes et constructions pour Delta Force. Des chiffres pour les gens qui s'intéressent aux chiffres.",
+      "cta": "Bientôt disponible"
+    }
+  },
+  "badges": {
+    "hosted_here": "Hébergé ici",
+    "in_development": "En développement"
+  },
+  "about": {
+    "label": "Profil de jeu",
+    "bio": "Joueur qui se concentre sur le jeu compétitif Delta Force. Je construis et maintiens des ressources pour la communauté Delta Force - streamers, serveurs, guides et outils de données. Ce site est la plaque tournante de tout cela.",
+    "projects_label": "Projets",
+    "streamer_showcase_desc": "Répertoire de streamers de la Force Delta avec filtres et statut en direct.",
+    "community_reference_desc": "Liste des serveurs Discord et TeamSpeak de Delta Force.",
+    "competitive_hub_desc": "Guides de scrim, ensembles de règles et suivi des statistiques pour le jeu compétitif.",
+    "data_hub_desc": "Suivi de l'économie, statistiques sur les armes et outils de données de jeu.",
+    "view": "Vue →"
+  },
+  "streamers": {
+    "label": "Liste Curated",
+    "title": "Streamers de la Force Delta",
+    "intro": "Des streamers triés sur le volet avec des descriptions pour t'aider à trouver ton match. Le statut en direct est actualisé au chargement de la page.",
+    "search_placeholder": "Recherche par nom...",
+    "filter_all": "Tous",
+    "filter_cam_on": "Cam On",
+    "filter_no_cam": "Pas de came",
+    "filter_tryharder": "Tryharder",
+    "filter_entertainer": "Divertisseur",
+    "filter_casual_player": "Joueur occasionnel",
+    "filter_operation": "Fonctionnement",
+    "filter_warfare": "Guerre",
+    "filter_top_player": "Meilleur joueur",
+    "filter_sineva": "Sineva",
+    "filter_girl": "Fille",
+    "lang_all": "Toutes les langues",
+    "lang_en": "Anglais",
+    "lang_fr": "Français",
+    "lang_de": "Allemand",
+    "lang_es": "Espagnol",
+    "lang_zh": "Chinois",
+    "lang_ru": "Russe",
+    "lang_pt": "Portugais",
+    "empty": "Aucun streamer ne correspond à tes filtres."
+  },
+  "community": {
+    "label": "Référence communautaire",
+    "title": "Serviteurs de la communauté",
+    "intro": "Serveurs Discord et TeamSpeak pour les joueurs de Delta Force. Trouve ta région, ton style de jeu, tes interlocuteurs.",
+    "filter_all": "Tous",
+    "filter_competitive": "Compétitif",
+    "filter_casual": "Décontracté",
+    "filter_scrims": "Scrims",
+    "filter_eu": "L'UE",
+    "filter_na": "NA",
+    "filter_global": "Global",
+    "join": "Rejoindre →",
+    "empty": "Aucun serveur ne correspond à tes filtres."
+  },
+  "contact": {
+    "label": "Trouve-moi",
+    "title": "Contact",
+    "discord_desc": "Ajoute-moi sur Discord"
+  },
+  "footer": {
+    "disclaimer": "Non affilié à TiMi Studio ou Level Infinite"
+  }
+}

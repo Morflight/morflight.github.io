@@ -1,0 +1,98 @@
+{
+  "nav": {
+    "home": "Zuhause",
+    "about": "Über",
+    "streamers": "Streamer",
+    "community": "Gemeinschaft",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "eyebrow": "Delta Force Ressourcen",
+    "subtitle": "Ein kuratierter Hub für Delta Force-Spieler - Streamer, Community-Server, Wettbewerbs-Tools und Spieldaten. Entwickelt von einem Spieler für Spieler.",
+    "role_main": "Haupt"
+  },
+  "projects": {
+    "streamer_showcase": {
+      "title": "Streamer Showcase",
+      "desc": "Kuratierte Liste der Delta Force Streamer mit Tags, Sprachfiltern und Live-Status. Finde Inhalte, die zu deiner Stimmung passen.",
+      "cta": "Streamer → durchsuchen"
+    },
+    "community_reference": {
+      "title": "Gemeinschaftliche Referenz",
+      "desc": "Discord und TeamSpeak Server für die Delta Force Community. Finde deine Region, deinen Spielstil und deine Leute.",
+      "cta": "Server finden →"
+    },
+    "competitive_hub": {
+      "title": "Wettbewerbsfähiger Hub",
+      "desc": "Anleitungen zur Einrichtung des Scrim-Clients, Aktualisierungen des Regelwerks für Wettkämpfe und Verfolgung der Statistiken für die Delta Force-Wettkampfszene.",
+      "cta": "Demnächst"
+    },
+    "data_hub": {
+      "title": "Datendrehscheibe",
+      "desc": "Spieldaten, Wirtschaftsdaten, Waffenstatistiken und Builds für Delta Force. Zahlen für Leute, die sich für Zahlen interessieren.",
+      "cta": "Demnächst"
+    }
+  },
+  "badges": {
+    "hosted_here": "Hier gehostet",
+    "in_development": "In Entwicklung"
+  },
+  "about": {
+    "label": "Spiel-Profil",
+    "bio": "Spieler mit Fokus auf Delta Force-Wettkämpfe. Ich baue und pflege Ressourcen für die Delta Force Community - Streamer, Server, Guides und Datentools. Diese Seite ist der Knotenpunkt für all das.",
+    "projects_label": "Projekte",
+    "streamer_showcase_desc": "Kuratiertes Delta Force Streamer-Verzeichnis mit Filtern und Live-Status.",
+    "community_reference_desc": "Liste der Delta Force Discord und TeamSpeak Server.",
+    "competitive_hub_desc": "Scrim-Guides, Regelwerke und Statistiken für das Wettkampfspiel.",
+    "data_hub_desc": "Wirtschaftsverfolgung, Waffenstatistiken und Spieldaten-Tools.",
+    "view": "Ansicht →"
+  },
+  "streamers": {
+    "label": "Kuratierte Liste",
+    "title": "Delta Force Luftschlangen",
+    "intro": "Handverlesene Streamer mit Beschreibungen, die dir helfen, dein Match zu finden. Der Live-Status wird beim Laden der Seite aktualisiert.",
+    "search_placeholder": "Suche nach Namen...",
+    "filter_all": "Alle",
+    "filter_cam_on": "Cam On",
+    "filter_no_cam": "Keine Kamera",
+    "filter_tryharder": "Tryharder",
+    "filter_entertainer": "Entertainer",
+    "filter_casual_player": "Gelegenheitsspieler",
+    "filter_operation": "Operation",
+    "filter_warfare": "Kriegsführung",
+    "filter_top_player": "Top Spieler",
+    "filter_sineva": "Sineva",
+    "filter_girl": "Mädchen",
+    "lang_all": "Alle Sprachen",
+    "lang_en": "Englisch",
+    "lang_fr": "Französisch",
+    "lang_de": "Deutsch",
+    "lang_es": "Spanisch",
+    "lang_zh": "Chinesisch",
+    "lang_ru": "Russisch",
+    "lang_pt": "Portugiesisch",
+    "empty": "Keine Streamer passen zu deinen Filtern."
+  },
+  "community": {
+    "label": "Gemeinschaftliche Referenz",
+    "title": "Community Diener",
+    "intro": "Discord und TeamSpeak Server für Delta Force Spieler. Finde deine Region, deinen Spielstil und deine Leute.",
+    "filter_all": "Alle",
+    "filter_competitive": "Konkurrenzfähig",
+    "filter_casual": "Lässig",
+    "filter_scrims": "Scrims",
+    "filter_eu": "EU",
+    "filter_na": "NA",
+    "filter_global": "Global",
+    "join": "→ Verbinden",
+    "empty": "Keine Server entsprechen deinen Filtern."
+  },
+  "contact": {
+    "label": "Finde mich",
+    "title": "Kontakt",
+    "discord_desc": "Füge mich auf Discord hinzu"
+  },
+  "footer": {
+    "disclaimer": "Nicht verbunden mit TiMi Studio oder Level Infinite"
+  }
+}
