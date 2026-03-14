@@ -1,8 +1,6 @@
 name: "[data] Streamer Profiles"
 
 on:
-  push:
-    branches: [master]
   schedule:
     # Runs once a day at 04:00 UTC
     - cron: '0 4 * * *'
