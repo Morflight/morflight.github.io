@@ -1,0 +1,66 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Only one deploy runs at a time; in-progress deploy is NOT cancelled
+# so a translation commit never races with a deployment.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # push translation commits
+  pages: write      # deploy to GitHub Pages
+  id-token: write   # OIDC token for Pages deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---------------------------------------------------------------
+      # Step 1 — Translate new / changed strings (diff-only via snapshot)
+      # Fails loudly if strings need translation and the API is unavailable.
+      # If this step fails, the entire job fails and deployment is skipped.
+      # ---------------------------------------------------------------
+      - name: Translate updated strings
+        env:
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+        run: python3 .github/scripts/translate.py
+
+      # ---------------------------------------------------------------
+      # Step 2 — Commit translations + snapshot if anything changed
+      # Uses [skip ci] so this commit does not retrigger the workflow.
+      # ---------------------------------------------------------------
+      - name: Commit translations if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add i18n/
+          git diff --cached --quiet || (
+            git commit -m "chore: update translations [skip ci]" && git push
+          )
+
+      # ---------------------------------------------------------------
+      # Step 3 — Deploy to GitHub Pages (using local working directory,
+      # which already contains the freshly translated files)
+      # ---------------------------------------------------------------
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

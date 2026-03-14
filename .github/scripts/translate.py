@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """
 Translate i18n/en.json into all target languages using the DeepL API.
-Writes i18n/{lang}.json for each target language.
+
+Diff-based: compares en.json against a snapshot (i18n/.en_snapshot.json)
+and only translates new or changed strings. Existing translations for
+unchanged strings are kept as-is, saving API quota.
+
+Exit codes:
+  0 — success, or nothing needed to translate
+  1 — strings need translation but the API call failed (quota, auth, etc.)
+      Deployment is blocked until this is resolved.
 
 Requires env var: DEEPL_API_KEY
-DeepL free tier keys end in :fx  → uses api-free.deepl.com
-DeepL pro keys                   → uses api.deepl.com
+  Free tier keys end in :fx  → api-free.deepl.com
+  Pro keys                   → api.deepl.com
 """
 
 import json
@@ -14,9 +22,6 @@ import sys
 import urllib.request
 import urllib.error
 
-# ---------------------------------------------------------------------------
-# Target languages: { output filename: DeepL language code }
-# ---------------------------------------------------------------------------
 TARGETS = {
     "fr": "FR",
     "de": "DE",
@@ -25,9 +30,13 @@ TARGETS = {
     "ru": "RU",
 }
 
-# Languages that support the formality parameter in DeepL
 FORMALITY_SUPPORTED = {"FR", "DE", "ES", "PT-BR", "RU"}
+SNAPSHOT_PATH       = "i18n/.en_snapshot.json"
 
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
 def get_endpoint(api_key: str) -> str:
     return (
@@ -37,20 +46,26 @@ def get_endpoint(api_key: str) -> str:
     )
 
 
+def load_json(path: str) -> dict:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return {}
+
+
 def flatten(obj: dict, prefix: str = "") -> dict:
-    """Recursively flatten a nested dict into dot-notation keys."""
-    items = {}
+    out = {}
     for k, v in obj.items():
         key = f"{prefix}.{k}" if prefix else k
         if isinstance(v, dict):
-            items.update(flatten(v, key))
+            out.update(flatten(v, key))
         else:
-            items[key] = v
-    return items
+            out[key] = v
+    return out
 
 
 def unflatten(flat: dict) -> dict:
-    """Reconstruct a nested dict from dot-notation keys."""
     result = {}
     for key, value in flat.items():
         parts = key.split(".")
@@ -61,10 +76,14 @@ def unflatten(flat: dict) -> dict:
     return result
 
 
+# ---------------------------------------------------------------------------
+# DeepL call — fails loudly with actionable messages
+# ---------------------------------------------------------------------------
+
 def translate_batch(
     texts: list[str], target_lang: str, api_key: str, endpoint: str
 ) -> list[str]:
-    payload = {
+    payload: dict = {
         "text": texts,
         "source_lang": "EN",
         "target_lang": target_lang,
@@ -73,7 +92,7 @@ def translate_batch(
         payload["formality"] = "prefer_less"
 
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
+    req  = urllib.request.Request(
         endpoint,
         data=data,
         headers={
@@ -81,53 +100,112 @@ def translate_batch(
             "Content-Type": "application/json",
         },
     )
+
     try:
         with urllib.request.urlopen(req) as resp:
-            result = json.loads(resp.read())
-        return [t["text"] for t in result["translations"]]
+            return [t["text"] for t in json.loads(resp.read())["translations"]]
+
     except urllib.error.HTTPError as e:
         body = e.read().decode()
-        print(f"  DeepL HTTP {e.code}: {body}", file=sys.stderr)
+        if e.code == 456:
+            print(
+                "\n❌  DEEPL QUOTA EXCEEDED\n"
+                "    Your free-tier character quota for this month is exhausted.\n"
+                "    Translations cannot be updated — deployment is blocked.\n"
+                "    ➜  Upgrade your DeepL plan at deepl.com/pro\n"
+                "       or wait for the monthly quota reset.\n",
+                file=sys.stderr,
+            )
+        elif e.code == 403:
+            print(
+                "\n❌  DEEPL AUTHENTICATION FAILED\n"
+                "    The DEEPL_API_KEY secret is invalid or has been revoked.\n"
+                "    ➜  Go to: GitHub repo → Settings → Secrets → Actions\n"
+                "       and update the DEEPL_API_KEY value.\n",
+                file=sys.stderr,
+            )
+        elif e.code == 429:
+            print(
+                "\n❌  DEEPL RATE LIMIT\n"
+                "    Too many requests were sent to the DeepL API in a short time.\n"
+                "    ➜  Re-run the workflow in a few minutes.\n",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"\n❌  DEEPL API ERROR  (HTTP {e.code})\n"
+                f"    Response body: {body}\n",
+                file=sys.stderr,
+            )
         raise
 
 
-def main():
-    api_key = os.environ.get("DEEPL_API_KEY", "").strip()
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    api_key  = os.environ.get("DEEPL_API_KEY", "").strip()
+    endpoint = get_endpoint(api_key) if api_key else None
+
+    en_flat       = flatten(load_json("i18n/en.json"))
+    snapshot_flat = flatten(load_json(SNAPSHOT_PATH))
+
+    # Keys that are new or whose English value changed since last translation
+    changed = {k: v for k, v in en_flat.items() if snapshot_flat.get(k) != v}
+
+    if not changed:
+        print("✓  Nothing to translate — all strings match the snapshot.")
+        return
+
+    print(f"→  {len(changed)} string(s) need translation:\n")
+    for k in sorted(changed):
+        marker = "NEW    " if k not in snapshot_flat else "CHANGED"
+        print(f"   [{marker}]  {k}")
+
+    # Block here if no API key — there IS work to do
     if not api_key:
-        print("Error: DEEPL_API_KEY not set", file=sys.stderr)
+        print(
+            f"\n❌  DEEPL_API_KEY NOT SET\n"
+            f"    {len(changed)} string(s) need translation but no API key is configured.\n"
+            "    ➜  Go to: GitHub repo → Settings → Secrets → Actions\n"
+            "       and add DEEPL_API_KEY (get a free key at deepl.com/pro-api).\n",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
-    endpoint = get_endpoint(api_key)
-    print(f"Using endpoint: {endpoint}")
-
-    with open("i18n/en.json", "r", encoding="utf-8") as f:
-        source = json.load(f)
-
-    flat   = flatten(source)
-    keys   = list(flat.keys())
-    values = list(flat.values())
-
-    BATCH = 50  # DeepL recommends ≤ 50 strings per request
+    keys   = list(changed.keys())
+    values = list(changed.values())
+    BATCH  = 50
 
     for lang_file, deepl_code in TARGETS.items():
-        print(f"Translating → {deepl_code} ({lang_file}.json) ...")
-        translated_values = []
+        print(f"\n→  Translating {len(keys)} string(s) → {deepl_code} ...")
 
+        # Load existing translations, drop keys deleted from en.json
+        existing = flatten(load_json(f"i18n/{lang_file}.json"))
+        existing = {k: v for k, v in existing.items() if k in en_flat}
+
+        # Translate only the diff
+        translated_values: list[str] = []
         for i in range(0, len(values), BATCH):
-            batch = values[i : i + BATCH]
             translated_values.extend(
-                translate_batch(batch, deepl_code, api_key, endpoint)
+                translate_batch(values[i : i + BATCH], deepl_code, api_key, endpoint)
             )
 
-        translated_flat = dict(zip(keys, translated_values))
-        translated      = unflatten(translated_flat)
+        # Merge new translations into existing
+        for k, v in zip(keys, translated_values):
+            existing[k] = v
 
         out_path = f"i18n/{lang_file}.json"
         with open(out_path, "w", encoding="utf-8") as f:
-            json.dump(translated, f, ensure_ascii=False, indent=2)
-        print(f"  Written {out_path}")
+            json.dump(unflatten(existing), f, ensure_ascii=False, indent=2)
+        print(f"   ✓  Written {out_path}")
 
-    print("Done.")
+    # Save snapshot so next run only translates future changes
+    with open(SNAPSHOT_PATH, "w", encoding="utf-8") as f:
+        json.dump(en_flat, f, ensure_ascii=False, indent=2)
+    print(f"\n✓  Snapshot updated → {SNAPSHOT_PATH}")
+    print("✓  Translation complete.")
 
 
 if __name__ == "__main__":
