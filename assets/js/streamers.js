@@ -112,6 +112,7 @@ function applyFilters() {
   const count = document.getElementById('filter-count');
 
   grid.innerHTML = visible.map(buildCard).join('');
+  if (window.i18n) window.i18n.applyTranslations();
   empty.hidden   = visible.length > 0;
   count.textContent = visible.length === STREAMERS.length
     ? `${STREAMERS.length} streamers`

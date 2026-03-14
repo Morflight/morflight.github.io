@@ -80,7 +80,6 @@ h1, h2, h3, h4 {
   letter-spacing: 0.08em;
   color: var(--df);
   text-transform: uppercase;
-  margin-right: auto;
 }
 
 .nav__links {
@@ -105,6 +104,29 @@ h1, h2, h3, h4 {
   color: var(--text);
   background: var(--surface-alt);
 }
+
+/* Language switcher */
+.lang-switcher {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  padding: 0.22rem 0.45rem;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.lang-btn:hover { color: var(--text); background: var(--surface-alt); }
+.lang-btn.active { color: var(--df); border-color: rgba(0,229,255,0.3); background: var(--df-dim); }
 
 /* Hamburger */
 .nav__toggle {

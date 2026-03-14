@@ -6,12 +6,10 @@
   <title>About Morflight — Delta Force Player</title>
   <meta name="description" content="Morflight is a Delta Force player building resources for the community: streamers, community servers, competitive tools and data.">
   <link rel="canonical" href="https://morflight.github.io/about.html">
-
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://morflight.github.io/about.html">
   <meta property="og:title" content="About Morflight — Delta Force Player">
   <meta property="og:description" content="Delta Force player building resources for the community.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -21,63 +19,72 @@
 
   <nav class="nav">
     <a href="/" class="nav__logo">Morflight</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
     <button class="nav__toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/streamers">Streamers</a></li>
-      <li><a href="/community">Community</a></li>
-      <li><a href="/contact">Contact</a></li>
+      <li><a href="/" data-i18n="nav.home">Home</a></li>
+      <li><a href="/about" data-i18n="nav.about">About</a></li>
+      <li><a href="/streamers" data-i18n="nav.streamers">Streamers</a></li>
+      <li><a href="/community" data-i18n="nav.community">Community</a></li>
+      <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
   </nav>
 
   <main class="page about-page">
 
     <header class="profile-header">
-      <p class="section-label">Gaming Profile</p>
+      <p class="section-label" data-i18n="about.label">Gaming Profile</p>
       <h1 class="profile-header__ign">Morf<span>light</span></h1>
       <div class="profile-header__games">
         <span class="badge badge--df">Delta Force — Main</span>
         <span class="badge badge--mhw">Monster Hunter World — Secondary</span>
       </div>
-      <p class="profile-header__bio">
+      <p class="profile-header__bio" data-i18n="about.bio">
         Player with a focus on competitive Delta Force. I build and maintain resources for the Delta Force community — streamers, servers, guides, and data tools. This site is the hub for all of it.
       </p>
     </header>
 
-    <p class="section-label">Projects</p>
+    <p class="section-label" data-i18n="about.projects_label">Projects</p>
     <ul class="about-projects">
       <li>
-        <span class="about-projects__name">Streamer Showcase</span>
-        <span class="about-projects__desc">Curated Delta Force streamer directory with filters and live status.</span>
-        <a href="/streamers" class="about-projects__link">View →</a>
+        <span class="about-projects__name" data-i18n="projects.streamer_showcase.title">Streamer Showcase</span>
+        <span class="about-projects__desc" data-i18n="about.streamer_showcase_desc">Curated Delta Force streamer directory with filters and live status.</span>
+        <a href="/streamers" class="about-projects__link" data-i18n="about.view">View →</a>
       </li>
       <li>
-        <span class="about-projects__name">Community Reference</span>
-        <span class="about-projects__desc">List of Delta Force Discord and TeamSpeak servers.</span>
-        <a href="/community" class="about-projects__link">View →</a>
+        <span class="about-projects__name" data-i18n="projects.community_reference.title">Community Reference</span>
+        <span class="about-projects__desc" data-i18n="about.community_reference_desc">List of Delta Force Discord and TeamSpeak servers.</span>
+        <a href="/community" class="about-projects__link" data-i18n="about.view">View →</a>
       </li>
       <li>
-        <span class="about-projects__name">Competitive Hub</span>
-        <span class="about-projects__desc">Scrim guides, rulesets, and stats tracking for competitive play.</span>
-        <span class="badge badge--soon" style="font-size:0.7rem">In Development</span>
+        <span class="about-projects__name" data-i18n="projects.competitive_hub.title">Competitive Hub</span>
+        <span class="about-projects__desc" data-i18n="about.competitive_hub_desc">Scrim guides, rulesets, and stats tracking for competitive play.</span>
+        <span class="badge badge--soon" style="font-size:0.7rem" data-i18n="badges.in_development">In Development</span>
       </li>
       <li>
-        <span class="about-projects__name">Data Hub</span>
-        <span class="about-projects__desc">Economy tracking, weapon stats, and game data tools.</span>
-        <span class="badge badge--soon" style="font-size:0.7rem">In Development</span>
+        <span class="about-projects__name" data-i18n="projects.data_hub.title">Data Hub</span>
+        <span class="about-projects__desc" data-i18n="about.data_hub_desc">Economy tracking, weapon stats, and game data tools.</span>
+        <span class="badge badge--soon" style="font-size:0.7rem" data-i18n="badges.in_development">In Development</span>
       </li>
     </ul>
 
   </main>
 
   <footer class="footer">
-    <span>Morflight &mdash; Not affiliated with TiMi Studio or Level Infinite</span>
+    <span>Morflight &mdash; <span data-i18n="footer.disclaimer">Not affiliated with TiMi Studio or Level Infinite</span></span>
     <a href="https://github.com/morflight" target="_blank" rel="noopener" style="color:var(--df)">GitHub</a>
   </footer>
 
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
