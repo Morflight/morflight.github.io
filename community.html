@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delta Force Community Servers — Morflight</title>
+  <meta name="description" content="Find Delta Force Discord and TeamSpeak servers by region and playstyle. Competitive, casual, EU, NA, and more.">
+  <meta name="keywords" content="Delta Force Discord, Delta Force community, Delta Force servers, Delta Force TeamSpeak">
+  <link rel="canonical" href="https://morflight.github.io/community.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morflight.github.io/community.html">
+  <meta property="og:title" content="Delta Force Community Servers — Morflight">
+  <meta property="og:description" content="Find Delta Force Discord and TeamSpeak servers by region and playstyle.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Morflight</a>
+    <button class="nav__toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="streamers.html">Streamers</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="page community-page">
+
+    <header class="section-header">
+      <p class="section-label">Community Reference</p>
+      <h1 class="section-title">Community Servers</h1>
+      <p class="section-intro">Discord and TeamSpeak servers for Delta Force players. Find your region, your playstyle, your people.</p>
+    </header>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <div class="filter-tags" role="group" aria-label="Filter by tag">
+        <button class="tag-btn active" data-tag="all">All</button>
+        <button class="tag-btn" data-tag="competitive">Competitive</button>
+        <button class="tag-btn" data-tag="casual">Casual</button>
+        <button class="tag-btn" data-tag="scrims">Scrims</button>
+        <button class="tag-btn" data-tag="eu">EU</button>
+        <button class="tag-btn" data-tag="na">NA</button>
+        <button class="tag-btn" data-tag="global">Global</button>
+      </div>
+    </div>
+
+    <p class="filter-count" id="filter-count"></p>
+
+    <div class="community-grid" id="community-grid" aria-live="polite"></div>
+
+    <p class="empty-state" id="empty-state" hidden>No servers match your filters.</p>
+
+  </main>
+
+  <footer class="footer">
+    <span>Morflight &mdash; Not affiliated with TiMi Studio or Level Infinite</span>
+    <a href="https://github.com/morflight" target="_blank" rel="noopener" style="color:var(--df)">GitHub</a>
+  </footer>
+
+  <script>
+    /* ------------------------------------------------------------------ */
+    /*  COMMUNITY SERVER DATA                                               */
+    /*  platform: "discord" or "teamspeak"                                 */
+    /*  tags: any combination of: competitive, casual, scrims, eu, na,     */
+    /*        global                                                        */
+    /*  invite: full invite URL                                             */
+    /* ------------------------------------------------------------------ */
+    const SERVERS = [
+      {
+        name: "Delta Force EU Competitive",
+        platform: "discord",
+        tags: ["competitive", "scrims", "eu"],
+        desc: "Main hub for the European competitive Delta Force scene. Scrim organisation, ruleset discussions, and team recruitment.",
+        invite: "#"
+      },
+      {
+        name: "Delta Force NA",
+        platform: "discord",
+        tags: ["casual", "na"],
+        desc: "North American community server. Casual play, LFG, and general discussion.",
+        invite: "#"
+      },
+      {
+        name: "Delta Force Global",
+        platform: "discord",
+        tags: ["casual", "global"],
+        desc: "Large international community server. English-primary with channels for multiple regions.",
+        invite: "#"
+      }
+    ];
+  </script>
+  <script src="assets/js/community.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

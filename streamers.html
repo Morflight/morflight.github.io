@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delta Force Streamers — Morflight</title>
+  <meta name="description" content="Find Delta Force streamers by language, playstyle, and vibe. Live status, curated descriptions, and filters to match what you're looking for.">
+  <meta name="keywords" content="Delta Force streamers, Delta Force Twitch, Delta Force YouTube, Delta Force content creators">
+  <link rel="canonical" href="https://morflight.github.io/streamers.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://morflight.github.io/streamers.html">
+  <meta property="og:title" content="Delta Force Streamers — Morflight">
+  <meta property="og:description" content="Find Delta Force streamers by language, playstyle, and vibe. Live status updated automatically.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Morflight</a>
+    <button class="nav__toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="streamers.html">Streamers</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="page streamers-page">
+
+    <header class="section-header">
+      <p class="section-label">Curated List</p>
+      <h1 class="section-title">Delta Force Streamers</h1>
+      <p class="section-intro">Hand-picked streamers with descriptions to help you find your match. Live status refreshes on page load.</p>
+    </header>
+
+    <!-- Filters -->
+    <div class="filter-bar" role="search" aria-label="Filter streamers">
+      <input
+        class="filter-search"
+        type="search"
+        id="streamer-search"
+        placeholder="Search by name…"
+        aria-label="Search streamers"
+      >
+
+      <div class="filter-tags" role="group" aria-label="Filter by tag">
+        <button class="tag-btn active" data-tag="all">All</button>
+        <button class="tag-btn" data-tag="cam-on">Cam On</button>
+        <button class="tag-btn" data-tag="no-cam">No Cam</button>
+        <button class="tag-btn" data-tag="tryharder">Tryharder</button>
+        <button class="tag-btn" data-tag="entertainer">Entertainer</button>
+        <button class="tag-btn" data-tag="casual-player">Casual Player</button>
+        <button class="tag-btn" data-tag="operation">Operation</button>
+        <button class="tag-btn" data-tag="warfare">Warfare</button>
+        <button class="tag-btn" data-tag="top-player">Top Player</button>
+        <button class="tag-btn" data-tag="sineva">Sineva</button>
+        <button class="tag-btn" data-tag="girl">Girl</button>
+      </div>
+
+      <select class="filter-select" id="lang-filter" aria-label="Filter by language">
+        <option value="all">All Languages</option>
+        <option value="en">English</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="es">Spanish</option>
+        <option value="zh">Chinese</option>
+        <option value="ru">Russian</option>
+        <option value="pt">Portuguese</option>
+      </select>
+    </div>
+
+    <p class="filter-count" id="filter-count"></p>
+
+    <!-- Streamer grid — populated by JS from STREAMERS data below -->
+    <div class="streamers-grid" id="streamers-grid" aria-live="polite"></div>
+
+    <p class="empty-state" id="empty-state" hidden>No streamers match your filters.</p>
+
+  </main>
+
+  <footer class="footer">
+    <span>Morflight &mdash; Not affiliated with TiMi Studio or Level Infinite</span>
+    <a href="https://github.com/morflight" target="_blank" rel="noopener" style="color:var(--df)">GitHub</a>
+  </footer>
+
+  <script>
+    /* ------------------------------------------------------------------ */
+    /*  STREAMER DATA                                                       */
+    /*  To add a streamer, copy one object and fill in the fields.         */
+    /*  twitch: Twitch login name (lowercase), or null if Twitch only      */
+    /*  youtube: YouTube channel URL or null                               */
+    /*  lang: language code matching the <select> options above            */
+    /*  tags: any combination of: competitive, high-interaction, chill,    */
+    /*        educational, no-camera                                       */
+    /* ------------------------------------------------------------------ */
+    const STREAMERS = [
+      {
+        name: "qkobyy",
+        twitch: "qkobyy",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "cam-on", "tryharder", "top-player"],
+        desc: ""
+      },
+      {
+        name: "flyzer_s",
+        twitch: "flyzer_s",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "cam-on", "entertainer"],
+        desc: ""
+      },
+      {
+        name: "silowa",
+        twitch: "silowa",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "cam-on", "tryharder", "entertainer"],
+        desc: ""
+      },
+      {
+        name: "djaem_",
+        twitch: "djaem_",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "no-cam", "tryharder", "top-player"],
+        desc: ""
+      },
+      {
+        name: "nevrozzar_",
+        twitch: "nevrozzar_",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "cam-on", "tryharder", "sineva"],
+        desc: ""
+      },
+      {
+        name: "maisnonfps",
+        twitch: "maisnonfps",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "no-cam", "tryharder", "girl"],
+        desc: ""
+      },
+      {
+        name: "mdl_labastos",
+        twitch: "mdl_labastos",
+        youtube: null,
+        lang: "fr",
+        tags: ["operation", "cam-on", "tryharder", "sineva"],
+        desc: ""
+      }
+    ];
+  </script>
+  <script src="assets/js/streamers.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
