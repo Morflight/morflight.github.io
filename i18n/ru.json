@@ -78,6 +78,8 @@
     "title": "Серверы сообщества",
     "intro": "Discord- и TeamSpeak-серверы для игроков в Delta Force. Найди свой регион, свой стиль игры, своих людей.",
     "filter_all": "Все",
+    "filter_official": "Официальный",
+    "filter_fr": "FR",
     "filter_competitive": "Соревновательный",
     "filter_casual": "Казуальный",
     "filter_scrims": "Скримы",

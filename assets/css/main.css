@@ -865,6 +865,37 @@ h1, h2, h3, h4 {
   border-color: var(--df);
 }
 
+.community-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.community-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.community-card__icon--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.community-card__identity {
+  flex: 1;
+  min-width: 0;
+}
+
 .community-card__top {
   display: flex;
   align-items: center;

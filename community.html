@@ -51,6 +51,8 @@
     <div class="filter-bar">
       <div class="filter-tags" role="group" aria-label="Filter by tag">
         <button class="tag-btn active" data-tag="all" data-i18n="community.filter_all">All</button>
+        <button class="tag-btn" data-tag="official" data-i18n="community.filter_official">Official</button>
+        <button class="tag-btn" data-tag="fr" data-i18n="community.filter_fr">FR</button>
         <button class="tag-btn" data-tag="competitive" data-i18n="community.filter_competitive">Competitive</button>
         <button class="tag-btn" data-tag="casual" data-i18n="community.filter_casual">Casual</button>
         <button class="tag-btn" data-tag="scrims" data-i18n="community.filter_scrims">Scrims</button>
@@ -75,25 +77,20 @@
   <script>
     const SERVERS = [
       {
-        name: "Delta Force EU Competitive",
+        name: "Delta Force Game",
         platform: "discord",
-        tags: ["competitive", "scrims", "eu"],
-        desc: "Main hub for the European competitive Delta Force scene. Scrim organisation, ruleset discussions, and team recruitment.",
-        invite: "#"
+        tags: ["official", "global", "casual"],
+        desc: "The official Delta Force Discord server. Latest news, patch notes, bug reports, and the best place to connect with the entire global player base.",
+        invite: "https://discord.gg/deltaforcegame",
+        icon: "https://cdn.discordapp.com/icons/1128946232207888414/3d60911c9461e593b672b3d557b93807.png?size=128"
       },
       {
-        name: "Delta Force NA",
+        name: "Delta Force France",
         platform: "discord",
-        tags: ["casual", "na"],
-        desc: "North American community server. Casual play, LFG, and general discussion.",
-        invite: "#"
-      },
-      {
-        name: "Delta Force Global",
-        platform: "discord",
-        tags: ["casual", "global"],
-        desc: "Large international community server. English-primary with channels for multiple regions.",
-        invite: "#"
+        tags: ["fr", "eu", "casual"],
+        desc: "La communauté francophone de référence pour Delta Force. Actualités, patchnotes, giveaways, recherche de joueur et discussions.",
+        invite: "https://discord.gg/deltaforcefr",
+        icon: "https://cdn.discordapp.com/icons/1274447569950347264/d5956859ce92dd233c2016b045d7b480.png?size=128"
       }
     ];
   </script>

@@ -78,6 +78,8 @@
     "title": "Community Servers",
     "intro": "Discord and TeamSpeak servers for Delta Force players. Find your region, your playstyle, your people.",
     "filter_all": "All",
+    "filter_official": "Official",
+    "filter_fr": "FR",
     "filter_competitive": "Competitive",
     "filter_casual": "Casual",
     "filter_scrims": "Scrims",

@@ -78,6 +78,8 @@
     "title": "Servidores comunitarios",
     "intro": "Servidores de Discord y TeamSpeak para jugadores de Delta Force. Encuentra tu región, tu estilo de juego, tu gente.",
     "filter_all": "Todos",
+    "filter_official": "Oficial",
+    "filter_fr": "FR",
     "filter_competitive": "Competitivo",
     "filter_casual": "Casual",
     "filter_scrims": "Scrims",
