@@ -1,4 +1,4 @@
-name: Update Live Status
+name: "[data] Live Status"
 
 on:
   push:

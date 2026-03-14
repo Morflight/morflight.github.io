@@ -1,4 +1,4 @@
-name: Update Streamer Profiles
+name: "[data] Streamer Profiles"
 
 on:
   push:

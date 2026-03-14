@@ -1,4 +1,4 @@
-name: Deploy
+name: "[site] Deploy"
 
 on:
   push:
