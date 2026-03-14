@@ -61,6 +61,11 @@ async function setLang(lang) {
 
   applyTranslations();
 
+  /* show AI disclaimer only for non-English languages */
+  document.querySelectorAll('.footer__ai-note').forEach(el => {
+    el.hidden = (lang === DEFAULT);
+  });
+
   /* re-render dynamic content on pages that have it */
   if (typeof applyFilters === 'function') applyFilters();
 }

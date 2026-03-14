@@ -37,3 +37,20 @@ Both plans require validation before execution starts.
 - Keep the user able to follow along and course-correct at any point
 - Before asking to commit, update `site-plan.md` if pages were added, removed, or their purpose changed
 - Use `prompts/` templates as specs input when starting a skill
+
+## Translations
+
+Translations are static JSON files — there is no automated pipeline. Any time `i18n/en.json` is added to or changed, **update all five language files in the same commit**:
+
+| File | Language |
+|------|----------|
+| `i18n/fr.json` | French |
+| `i18n/de.json` | German |
+| `i18n/es.json` | Spanish |
+| `i18n/pt.json` | Portuguese (BR) |
+| `i18n/ru.json` | Russian |
+
+Rules:
+- Keep gaming terms untranslated where they are used as proper nouns: `Tryharder`, `Entertainer`, `Warfare`, `Sineva`, `Girl`, `Streamer Showcase`, `Community Reference`, `Competitive Hub`, `Data Hub`
+- Use informal register (`tu`/`du`/`tú`/`ты`) — this is a gaming site
+- Never leave a key untranslated or copied from English (except the proper nouns listed above)

@@ -93,6 +93,7 @@
     "discord_desc": "Ajoute-moi sur Discord"
   },
   "footer": {
-    "disclaimer": "Non affilié à TiMi Studio ou Level Infinite"
+    "disclaimer": "Non affilié à TiMi Studio ou Level Infinite",
+    "ai_translations": "Les traductions sont générées par une IA — des inexactitudes peuvent exister. N'hésite pas à me contacter pour signaler une erreur."
   }
 }

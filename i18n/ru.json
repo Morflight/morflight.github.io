@@ -93,6 +93,7 @@
     "discord_desc": "Добавь меня в Discord"
   },
   "footer": {
-    "disclaimer": "Не связан с TiMi Studio или Level Infinite"
+    "disclaimer": "Не связан с TiMi Studio или Level Infinite",
+    "ai_translations": "Переводы сгенерированы ИИ — возможны неточности. Напиши мне, если заметишь ошибку."
   }
 }

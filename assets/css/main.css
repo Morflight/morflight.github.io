@@ -970,6 +970,13 @@ h1, h2, h3, h4 {
   gap: 1rem;
   flex-wrap: wrap;
 }
+.footer__ai-note {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+  font-style: italic;
+}
 
 /* ============================================================
    Utility
