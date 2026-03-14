@@ -1,6 +1,8 @@
 name: Update Live Status
 
 on:
+  push:
+    branches: [master]
   schedule:
     # Runs every 5 minutes
     - cron: '*/5 * * * *'
