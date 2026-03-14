@@ -1,15 +1,83 @@
 <!doctype html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Morflight — Delta Force Player</title>
+  <meta name="description" content="Morflight is a Delta Force player building resources for the community: streamers, community servers, competitive tools and data.">
+  <link rel="canonical" href="https://morflight.github.io/about.html">
 
-	<head>
-		<meta charset="utf-8">
-		<title>Morflight | About</title>
-	</head>
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://morflight.github.io/about.html">
+  <meta property="og:title" content="About Morflight — Delta Force Player">
+  <meta property="og:description" content="Delta Force player building resources for the community.">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
 <body>
-	<div>
-		<h1>About</h1>
-	</div>
-</body>
 
+  <nav class="nav">
+    <a href="index.html" class="nav__logo">Morflight</a>
+    <button class="nav__toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="streamers.html">Streamers</a></li>
+      <li><a href="community.html">Community</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="page about-page">
+
+    <header class="profile-header">
+      <p class="section-label">Gaming Profile</p>
+      <h1 class="profile-header__ign">Morf<span>light</span></h1>
+      <div class="profile-header__games">
+        <span class="badge badge--df">Delta Force — Main</span>
+        <span class="badge badge--mhw">Monster Hunter World — Secondary</span>
+      </div>
+      <p class="profile-header__bio">
+        Player with a focus on competitive Delta Force. I build and maintain resources for the Delta Force community — streamers, servers, guides, and data tools. This site is the hub for all of it.
+      </p>
+    </header>
+
+    <p class="section-label">Projects</p>
+    <ul class="about-projects">
+      <li>
+        <span class="about-projects__name">Streamer Showcase</span>
+        <span class="about-projects__desc">Curated Delta Force streamer directory with filters and live status.</span>
+        <a href="streamers.html" class="about-projects__link">View →</a>
+      </li>
+      <li>
+        <span class="about-projects__name">Community Reference</span>
+        <span class="about-projects__desc">List of Delta Force Discord and TeamSpeak servers.</span>
+        <a href="community.html" class="about-projects__link">View →</a>
+      </li>
+      <li>
+        <span class="about-projects__name">Competitive Hub</span>
+        <span class="about-projects__desc">Scrim guides, rulesets, and stats tracking for competitive play.</span>
+        <span class="badge badge--soon" style="font-size:0.7rem">In Development</span>
+      </li>
+      <li>
+        <span class="about-projects__name">Data Hub</span>
+        <span class="about-projects__desc">Economy tracking, weapon stats, and game data tools.</span>
+        <span class="badge badge--soon" style="font-size:0.7rem">In Development</span>
+      </li>
+    </ul>
+
+  </main>
+
+  <footer class="footer">
+    <span>Morflight &mdash; Not affiliated with TiMi Studio or Level Infinite</span>
+    <a href="https://github.com/morflight" target="_blank" rel="noopener" style="color:var(--df)">GitHub</a>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
 </html>

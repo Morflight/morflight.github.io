@@ -1,0 +1,56 @@
+name: Update Live Status
+
+on:
+  schedule:
+    # Runs every 5 minutes
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-live-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get Twitch app token
+        id: token
+        run: |
+          RESPONSE=$(curl -s -X POST "https://id.twitch.tv/oauth2/token" \
+            -d "client_id=${{ secrets.TWITCH_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.TWITCH_CLIENT_SECRET }}" \
+            -d "grant_type=client_credentials")
+          TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch live status for all streamers
+        id: fetch
+        env:
+          TWITCH_TOKEN: ${{ steps.token.outputs.token }}
+          TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
+        run: |
+          # ----------------------------------------------------------------
+          # List every Twitch login from streamers.html here (lowercase).
+          # ----------------------------------------------------------------
+          LOGINS="qkobyy flyzer_s silowa djaem_ nevrozzar_ maisnonfps mdl_labastos"
+
+          # Build query string: ?user_login=a&user_login=b&...
+          QUERY=$(echo "$LOGINS" | tr ' ' '\n' | sed 's/^/user_login=/' | paste -sd '&')
+
+          RESPONSE=$(curl -s \
+            -H "Authorization: Bearer $TWITCH_TOKEN" \
+            -H "Client-Id: $TWITCH_CLIENT_ID" \
+            "https://api.twitch.tv/helix/streams?$QUERY")
+
+          # Build a JSON object: { "login": true, ... } for live channels only
+          echo "$RESPONSE" | jq '[.data[].user_login] | map({(.): true}) | add // {}' > live-status.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add live-status.json
+          git diff --cached --quiet || git commit -m "chore: update live status [skip ci]"
+          git push
