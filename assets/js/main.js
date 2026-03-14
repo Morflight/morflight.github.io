@@ -10,10 +10,8 @@ if (toggle && links) {
 }
 
 /* Mark active nav link */
-const currentPage = location.pathname.split('/').pop() || 'index.html';
+const currentPath = location.pathname.replace(/\/$/, '') || '/';
 document.querySelectorAll('.nav__links a').forEach(a => {
-  const href = a.getAttribute('href');
-  if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-    a.classList.add('active');
-  }
+  const href = a.getAttribute('href').replace(/\/$/, '') || '/';
+  if (href === currentPath) a.classList.add('active');
 });
