@@ -101,6 +101,12 @@ function applyFilters() {
     return matchTag && matchLang && matchName;
   });
 
+  visible.sort((a, b) => {
+    const aLive = a.twitch && liveStatus[a.twitch.toLowerCase()] ? 1 : 0;
+    const bLive = b.twitch && liveStatus[b.twitch.toLowerCase()] ? 1 : 0;
+    return bLive - aLive;
+  });
+
   const grid  = document.getElementById('streamers-grid');
   const empty = document.getElementById('empty-state');
   const count = document.getElementById('filter-count');
