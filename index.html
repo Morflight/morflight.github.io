@@ -8,19 +8,14 @@
   <meta name="keywords" content="Delta Force, Delta Force streamers, Delta Force community, Delta Force competitive, Delta Force tools, Morflight">
   <meta name="author" content="Morflight">
   <link rel="canonical" href="https://morflight.github.io/">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://morflight.github.io/">
   <meta property="og:title" content="Morflight — Delta Force Resources Hub">
   <meta property="og:description" content="Streamers, community servers, competitive tools and data for Delta Force players.">
   <meta property="og:site_name" content="Morflight">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Morflight — Delta Force Resources Hub">
   <meta name="twitter:description" content="Streamers, community servers, competitive tools and data for Delta Force players.">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -30,27 +25,35 @@
 
   <nav class="nav">
     <a href="/" class="nav__logo">Morflight</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="pt">PT</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
     <button class="nav__toggle" aria-label="Toggle menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav__links">
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/streamers">Streamers</a></li>
-      <li><a href="/community">Community</a></li>
-      <li><a href="/contact">Contact</a></li>
+      <li><a href="/" data-i18n="nav.home">Home</a></li>
+      <li><a href="/about" data-i18n="nav.about">About</a></li>
+      <li><a href="/streamers" data-i18n="nav.streamers">Streamers</a></li>
+      <li><a href="/community" data-i18n="nav.community">Community</a></li>
+      <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
     </ul>
   </nav>
 
   <section class="hero">
-    <p class="hero__eyebrow">Delta Force Resources</p>
+    <p class="hero__eyebrow" data-i18n="hero.eyebrow">Delta Force Resources</p>
     <h1 class="hero__title">Morf<span>light</span></h1>
-    <p class="hero__sub">A curated hub for Delta Force players — streamers, community servers, competitive tools, and game data. Built by a player, for players.</p>
+    <p class="hero__sub" data-i18n="hero.subtitle">A curated hub for Delta Force players — streamers, community servers, competitive tools, and game data. Built by a player, for players.</p>
     <div class="hero__games">
       <div class="game-pill game-pill--df">
         <span class="game-pill__dot"></span>
         Delta Force
-        <span class="game-pill__role">Main</span>
+        <span class="game-pill__role" data-i18n="hero.role_main">Main</span>
       </div>
     </div>
   </section>
@@ -58,46 +61,47 @@
   <div class="projects-grid page">
     <a href="/streamers" class="project-card project-card--internal">
       <div class="project-card__header">
-        <span class="project-card__title">Streamer Showcase</span>
-        <span class="badge badge--hosted">Hosted Here</span>
+        <span class="project-card__title" data-i18n="projects.streamer_showcase.title">Streamer Showcase</span>
+        <span class="badge badge--hosted" data-i18n="badges.hosted_here">Hosted Here</span>
       </div>
-      <p class="project-card__desc">Curated list of Delta Force streamers with tags, language filters, and live status. Find content that matches your vibe.</p>
-      <span class="project-card__cta">Browse Streamers →</span>
+      <p class="project-card__desc" data-i18n="projects.streamer_showcase.desc">Curated list of Delta Force streamers with tags, language filters, and live status. Find content that matches your vibe.</p>
+      <span class="project-card__cta" data-i18n="projects.streamer_showcase.cta">Browse Streamers →</span>
     </a>
 
     <a href="/community" class="project-card project-card--internal">
       <div class="project-card__header">
-        <span class="project-card__title">Community Reference</span>
-        <span class="badge badge--hosted">Hosted Here</span>
+        <span class="project-card__title" data-i18n="projects.community_reference.title">Community Reference</span>
+        <span class="badge badge--hosted" data-i18n="badges.hosted_here">Hosted Here</span>
       </div>
-      <p class="project-card__desc">Discord and TeamSpeak servers for the Delta Force community. Find your region, your playstyle, your people.</p>
-      <span class="project-card__cta">Find Servers →</span>
+      <p class="project-card__desc" data-i18n="projects.community_reference.desc">Discord and TeamSpeak servers for the Delta Force community. Find your region, your playstyle, your people.</p>
+      <span class="project-card__cta" data-i18n="projects.community_reference.cta">Find Servers →</span>
     </a>
 
     <a href="#" class="project-card project-card--external" target="_blank" rel="noopener">
       <div class="project-card__header">
-        <span class="project-card__title">Competitive Hub</span>
-        <span class="badge badge--soon">In Development</span>
+        <span class="project-card__title" data-i18n="projects.competitive_hub.title">Competitive Hub</span>
+        <span class="badge badge--soon" data-i18n="badges.in_development">In Development</span>
       </div>
-      <p class="project-card__desc">Scrim client setup guides, competitive ruleset updates, and stat tracking for the Delta Force competitive scene.</p>
-      <span class="project-card__cta">Coming Soon</span>
+      <p class="project-card__desc" data-i18n="projects.competitive_hub.desc">Scrim client setup guides, competitive ruleset updates, and stat tracking for the Delta Force competitive scene.</p>
+      <span class="project-card__cta" data-i18n="projects.competitive_hub.cta">Coming Soon</span>
     </a>
 
     <a href="#" class="project-card project-card--external" target="_blank" rel="noopener">
       <div class="project-card__header">
-        <span class="project-card__title">Data Hub</span>
-        <span class="badge badge--soon">In Development</span>
+        <span class="project-card__title" data-i18n="projects.data_hub.title">Data Hub</span>
+        <span class="badge badge--soon" data-i18n="badges.in_development">In Development</span>
       </div>
-      <p class="project-card__desc">Game data, economy tracking, weapon stats and builds for Delta Force. Numbers for people who care about numbers.</p>
-      <span class="project-card__cta">Coming Soon</span>
+      <p class="project-card__desc" data-i18n="projects.data_hub.desc">Game data, economy tracking, weapon stats and builds for Delta Force. Numbers for people who care about numbers.</p>
+      <span class="project-card__cta" data-i18n="projects.data_hub.cta">Coming Soon</span>
     </a>
   </div>
 
   <footer class="footer">
-    <span>Morflight &mdash; Not affiliated with TiMi Studio or Level Infinite</span>
+    <span>Morflight &mdash; <span data-i18n="footer.disclaimer">Not affiliated with TiMi Studio or Level Infinite</span></span>
     <a href="https://github.com/morflight" target="_blank" rel="noopener" style="color:var(--df)">GitHub</a>
   </footer>
 
+  <script src="assets/js/i18n.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
