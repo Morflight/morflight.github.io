@@ -708,11 +708,45 @@ h1, h2, h3, h4 {
   border-color: var(--df);
 }
 
+.streamer-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.streamer-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+.streamer-card__avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-alt);
+  color: var(--text-muted);
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+
+.streamer-card__identity {
+  flex: 1;
+  min-width: 0;
+}
+
 .streamer-card__top {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+  margin-bottom: 0.35rem;
 }
 
 .streamer-card__name {

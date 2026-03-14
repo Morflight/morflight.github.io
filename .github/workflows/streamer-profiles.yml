@@ -1,16 +1,16 @@
-name: Update Live Status
+name: Update Streamer Profiles
 
 on:
   schedule:
-    # Runs every 5 minutes
-    - cron: '*/5 * * * *'
+    # Runs once a day at 04:00 UTC
+    - cron: '0 4 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  update-live-status:
+  update-profiles:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,7 +25,7 @@ jobs:
           TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
           echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
 
-      - name: Fetch live status
+      - name: Fetch profile pictures
         env:
           TWITCH_TOKEN: ${{ steps.token.outputs.token }}
           TWITCH_CLIENT_ID: ${{ secrets.TWITCH_CLIENT_ID }}
@@ -40,14 +40,14 @@ jobs:
           RESPONSE=$(curl -s \
             -H "Authorization: Bearer $TWITCH_TOKEN" \
             -H "Client-Id: $TWITCH_CLIENT_ID" \
-            "https://api.twitch.tv/helix/streams?$QUERY")
+            "https://api.twitch.tv/helix/users?$QUERY")
 
-          echo "$RESPONSE" | jq '[.data[].user_login] | map({(.): true}) | add // {}' > live-status.json
+          echo "$RESPONSE" | jq '[.data[] | {(.login): .profile_image_url}] | add // {}' > streamer-profiles.json
 
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add live-status.json
-          git diff --cached --quiet || git commit -m "chore: update live status [skip ci]"
+          git add streamer-profiles.json
+          git diff --cached --quiet || git commit -m "chore: update streamer profiles [skip ci]"
           git push

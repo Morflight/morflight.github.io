@@ -7,14 +7,20 @@
 /* Format: { "twitch_login": true, ... }                       */
 
 let liveStatus = {};
+let profiles   = {};
 
-async function fetchLiveStatus() {
-  try {
-    const res = await fetch('live-status.json?t=' + Date.now());
-    if (res.ok) liveStatus = await res.json();
-  } catch (_) {
-    /* file may not exist yet — silently ignore */
-  }
+async function fetchData() {
+  const bust = '?t=' + Date.now();
+  await Promise.all([
+    fetch('live-status.json' + bust)
+      .then(r => r.ok ? r.json() : {})
+      .then(d => { liveStatus = d; })
+      .catch(() => {}),
+    fetch('streamer-profiles.json' + bust)
+      .then(r => r.ok ? r.json() : {})
+      .then(d => { profiles = d; })
+      .catch(() => {})
+  ]);
 }
 
 /* -- Rendering --------------------------------------------- */
@@ -25,7 +31,11 @@ function langLabel(code) {
 }
 
 function buildCard(s) {
-  const isLive = s.twitch && liveStatus[s.twitch.toLowerCase()];
+  const login  = s.twitch ? s.twitch.toLowerCase() : null;
+  const isLive = login && liveStatus[login];
+  const avatar = login && profiles[login]
+    ? `<img class="streamer-card__avatar" src="${profiles[login]}" alt="${s.name}" loading="lazy">`
+    : `<div class="streamer-card__avatar streamer-card__avatar--placeholder">${s.name[0].toUpperCase()}</div>`;
 
   const TAG_LABELS = {
     'cam-on':        'Cam On',
@@ -58,13 +68,18 @@ function buildCard(s) {
 
   return `
     <article class="streamer-card" data-tags="${s.tags.join(',')}" data-lang="${s.lang}">
-      <div class="streamer-card__top">
-        <span class="streamer-card__name">${s.name}</span>
-        <span class="streamer-card__lang">${langLabel(s.lang)}</span>
-        ${liveBadge}
+      <div class="streamer-card__header">
+        ${avatar}
+        <div class="streamer-card__identity">
+          <div class="streamer-card__top">
+            <span class="streamer-card__name">${s.name}</span>
+            <span class="streamer-card__lang">${langLabel(s.lang)}</span>
+            ${liveBadge}
+          </div>
+          <div class="streamer-card__tags">${tagPills}</div>
+        </div>
       </div>
       <p class="streamer-card__note">${s.desc}</p>
-      <div class="streamer-card__tags">${tagPills}</div>
       <div class="streamer-card__footer">${twitchBtn}${youtubeBtn}</div>
     </article>
   `;
@@ -100,7 +115,7 @@ function applyFilters() {
 /* -- Boot -------------------------------------------------- */
 
 (async () => {
-  await fetchLiveStatus();
+  await fetchData();
   applyFilters();
 
   /* Tag buttons */
