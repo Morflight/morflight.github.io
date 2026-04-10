@@ -23,7 +23,7 @@ Parse the user's arguments to determine the action:
 - **`detail ID`** — Show full details for an item including notes and references
 - **`sprint`** — Show only `ready` and `in-progress` items (current work focus)
 - **`remove ID`** — Remove an item entirely from the backlog
-- **`init-trello`** — Create a Trello board for this project, save the board ID, and sync existing items
+- **`init-product <ProductName>`** — Create the shared Trello board for a Product (multi-project) declared in `Dev/.claude/projects.md`, save the board ID inline in `projects.md`, and sync existing backlog items from every member project with their per-project prefixes
 
 ## Step 1 — Read the backlog
 
@@ -142,51 +142,60 @@ eval $(sops --decrypt /home/osboxes/Documents/Dev/envs/trello.enc.yaml 2>/dev/nu
 ```
 If the file doesn't exist or decryption fails, **skip this step silently**.
 
-2. Check for a board ID file at `.claude/trello-board-id` (contains just the board ID, nothing else)
+2. Resolve the board ID and card prefix for the current project. Resolution order:
 
-If either is missing, **skip silently**.
+   **(a) Product membership (preferred)** — read `Dev/.claude/projects.md`, parse the `## Products` section. If the current project's directory name appears in any product's `Members:` line as `ProjectName (PREFIX)`:
+   - `TRELLO_BOARD_ID` = the product's `Trello board:` value (skip if unset, log a hint to run `/backlog init-product <ProductName>`)
+   - `CARD_PREFIX` = the per-project `PREFIX` token
 
-Read the board ID:
-```bash
-TRELLO_BOARD_ID=$(cat .claude/trello-board-id 2>/dev/null)
-```
+   **(b) Legacy per-project board** — if the project is not in any Product, fall back to `.claude/trello-board-id` in the project root:
+   - `TRELLO_BOARD_ID` = file contents
+   - `CARD_PREFIX` = empty (cards stay `[B-NNN]` for backwards compatibility)
 
-### `init-trello` command
+   **(c) None** — no Trello sync, **skip silently**.
 
-Creates a Trello board for the project and syncs all existing backlog items.
+### `init-product <ProductName>` command
 
-**Step 1 — Check if already initialized:**
-If `.claude/trello-board-id` exists and the board ID is valid, warn and stop.
+Creates the shared Trello board for a multi-project Product and syncs every member project's existing backlog items.
 
-**Step 2 — Create the board:**
+**Step 1 — Look up the product:**
+Read `Dev/.claude/projects.md`, parse the `## Products` section, find the entry matching `<ProductName>`. If absent, fail with a message asking the user to declare it first.
+
+**Step 2 — Check if already initialized:**
+If the product's `Trello board:` line already contains a board ID, refuse unless `--force`.
+
+**Step 3 — Create the board:**
 ```bash
 curl -s -X POST "https://api.trello.com/1/boards/?key=${TRELLO_API_KEY}&token=${TRELLO_TOKEN}" \
-  -d "name=<Project Name> — Backlog" \
+  --data-urlencode "name=<ProductName>" \
   -d "defaultLists=false" \
   -d "defaultLabels=false"
 ```
+(Board name is the bare product name, no " — Backlog" suffix.)
 
-**Step 3 — Create lists** (reverse order for left-to-right display):
+**Step 4 — Create lists** (reverse order for left-to-right display):
 Done, Feedback, Blocked, In Progress, Ready — each with `pos=top`.
 
-**Step 4 — Create priority labels:**
+**Step 5 — Create priority labels:**
 `high` = red, `medium` = yellow, `low` = green.
 
-**Step 5 — Save the board ID** to `.claude/trello-board-id`.
+**Step 6 — Write the board ID back into `Dev/.claude/projects.md`** in-place under the product's `Trello board:` line, replacing the `_(unset — ...)_` placeholder with the new ID.
 
-**Step 6 — Initial sync:** create cards for all existing backlog items on the matching list.
+**Step 7 — Initial sync:** for each member listed under the product, read `Projects/<member>/.claude/backlog.md` and create one card per item with the per-member prefix in the card name (`[<PREFIX>-B-NNN] Title`), placed on the matching list with the matching priority label.
 
-**Step 7 — Report** with board URL and sync count.
+**Step 8 — Report** with board URL and per-member sync counts.
 
 ### Card identity
 
-Cards are identified by backlog ID prefix in the card name: `[B-001]`.
+Cards are identified by the prefixed backlog ID in the card name:
+- **In a Product:** `[BDMAPI-B-001] Title` — the prefix tells future agents which member project owns the card
+- **Legacy single-project board:** `[B-001] Title` — preserved for backwards compatibility on boards predating the Product model
 
 ### Sync actions
 
 | Backlog action | Trello action |
 |----------------|---------------|
-| `add` | Create card on Ready list with priority label |
+| `add` | Create card on Ready list with priority label, name `[<PREFIX>-]B-NNN Title` |
 | `start` | Move card to In Progress list |
 | `done` | Move card to Done list |
 | `feedback` | Move card to Feedback list (awaiting user review) |
@@ -194,10 +203,12 @@ Cards are identified by backlog ID prefix in the card name: `[B-001]`.
 | `priority` | Update card label |
 | `remove` | Archive card |
 
+Card lookup uses the full prefixed ID (e.g. `[BDMAPI-B-001]`) so two members of the same Product can both have a `B-001` without collision.
+
 ### Error handling
 
 Trello sync is **best-effort**. If any API call fails, log a one-line warning. Never retry or block the local update. `backlog.md` is always the source of truth.
 
 ### Future: inbound sync
 
-> **Not yet implemented.** A future `triage` command will pull new Trello cards (e.g. customer tickets, external requests) that were created directly on the board, and present them for qualification: accept into backlog (assign priority/category), defer, or reject. This enables non-technical stakeholders to submit work via Trello while the backlog file remains the source of truth. The skill should be designed so this can be added without restructuring — card identity via `[B-NNN]` prefix already distinguishes backlog-managed cards from external ones (external cards won't have the prefix).
+> **Not yet implemented.** A future `triage` command will pull new Trello cards (e.g. customer tickets, external requests) that were created directly on the board, and present them for qualification: accept into a member project's backlog (assign priority/category and project), defer, or reject. This enables non-technical stakeholders to submit work via Trello while the backlog files remain the source of truth. Card identity via `[<PREFIX>-B-NNN]` already distinguishes managed cards from external ones — external cards won't have the prefix at all, and the agent task router uses `<PREFIX>` to know which project a card belongs to.
