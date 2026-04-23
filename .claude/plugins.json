@@ -1,0 +1,7 @@
+{
+  "$schema": "https://morflight.github.io/claude-plugins/plugins.schema.json",
+  "type": "github-pages",
+  "plugins": {
+    "claude-github-pages": "*"
+  }
+}
