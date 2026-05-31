@@ -1,37 +1,23 @@
 # morflight.github.io
 
-Personal portfolio and static site hosted on GitHub Pages.
+Claude Code adapter for this project.
 
-@.claude/site-plan.md
-@.claude/workflow.md
-@.claude/common-tasks.md
-@.claude/dev-setup.md
+Durable project knowledge now lives in shared, harness-neutral docs under `.ai/`. Claude-specific commands, settings, hooks, and skills remain in `.claude/`.
 
-## Commands
+## Read First
 
-```bash
-make serve              # Preview locally at http://localhost:8080
-git push origin master  # Deploy to https://morflight.github.io
-```
+1. `AGENTS.md` — primary project operating rules, shared with Codex.
+2. `.ai/README.md` — shared project documentation index.
+3. Relevant `.ai/*.md` files for architecture, workflow, setup, troubleshooting, API, schema, or feature details.
 
-## Architecture
+## Claude-Specific Material
 
-No build step — files are served directly from `master` by GitHub Pages.
+- `.claude/skills/**` — Claude project skills, if present.
+- `.claude/settings*.json` — Claude Code permissions/hooks only.
+- `.claude/CLAUDE.local.md` — local Claude-only context, if present.
 
-```
-index.html        # Home / landing
-about.html        # About page
-projects.html     # Portfolio / projects
-contact.html      # Contact
-assets/
-  css/main.css    # Global styles
-  js/main.js      # Optional interactivity
-  img/            # Images and icons
-  fonts/          # Self-hosted fonts
-.github/
-  workflows/      # GitHub Actions (only if needed — document in site-plan.md)
-.claude/
-  site-plan.md    # Brainstorming, page inventory, design notes
-```
+## Compatibility
 
-Push to `master` to deploy. GitHub Pages publishes within ~30 seconds.
+Do not delete `.claude/**` just because a shared `.ai/` copy exists. Claude Code still expects `.claude` for native discovery of commands, settings, hooks, and skills.
+
+The previous detailed Claude guidance has been copied into `.ai/` where applicable and remains available in `.claude/**` legacy docs.
